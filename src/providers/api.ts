@@ -19,8 +19,8 @@ export class Api {
   	constructor(public http:Http) {
    	 
  	}
+  	get3(path:string = "", h:any = {}){
 
-  	get(path:string = "", h:any = {}){
 	  	return new Promise((resolve, reject) =>{
 	  			let headers = new Headers(h);
 	  		    let options = new RequestOptions({ headers: headers });
@@ -38,6 +38,28 @@ export class Api {
 	  				}
 	  			);
 	  		});
+  	}
+  	
+  	get(path:string = "", h:any = {}){
+	  	return new Promise((resolve, reject) =>{
+			if(path != ''){
+				resolve(
+					[
+						{
+							"avatar": "https://avatars0.githubusercontent.com/u/262517?v=3",
+							"user"  : "mralexgray/2200087-Serial-Protocol"
+						},
+						{
+							"avatar": "https://avatars0.githubusercontent.com/u/262517?v=3",
+							"user"  : "mralexgray/2200087-Serial-Protocol2"
+						}
+					]	
+				);
+				console.log('promise')
+			}else{
+				reject('Error');
+			}
+		});
   	}
 
   	get2(path:string = ""){
