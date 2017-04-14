@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Contact
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let r of list">
+    <img src="{{r.avatar}}" alt="" class="">
+    <ion-card-content>
+      <ion-card-title>
+        {{r.name}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Ionic!</h2>
+  <ion-list>
+
+    <top-input (onAddText)="add($event)"  [text]="text" ></top-input>
+
+    <ion-item *ngFor="let item of list" >{{item}}</ion-item>
+
+  </ion-list>
+
+</ion-content>

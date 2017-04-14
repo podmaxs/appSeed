@@ -1,0 +1,40 @@
+import { Injectable }                         from '@angular/core';
+import { Http, Headers, RequestOptions}       from '@angular/http';
+import { Observable }                         from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+
+/*
+  Generated class for the Api provider.
+
+  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+  for more info on providers and Angular 2 DI.
+*/
+@Injectable()
+export class Api {
+	public url:string = "https://api.github.com/users/mralexgray/repos";
+	constructor(public http: Http) {
+    	console.log('Hello Api Provider');
+	}
+
+
+  get(path:string = "", h:any = {}){
+	return new Promise((resolve, reject) =>{
+		let headers = new Headers(h);
+	    let options = new RequestOptions({ headers: headers });
+		this.http.get(this.url+path,options)
+		.map(res => {let json = res.json(); return typeof json.data != typeof undefined?json.data:{};})
+		.subscribe(
+			data => {
+				if(typeof data == typeof {})
+					resolve(data);
+				else
+					reject('Response data error');
+			},
+			error => {
+				reject(error);
+			}
+		);
+	})
+  }
+
+}
